@@ -43,5 +43,8 @@ Targted audience is pthat wanna be able eople who want to invest
   <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screenshot_20170313-183245.png" width="350"/>
   <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screenshot_20170313-183252.png" width="350"/>
 </p>
+<p align="center">
+  <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screenshot_20170313-183259.png" width="350"/>
+</p>
 
   

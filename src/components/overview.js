@@ -5,14 +5,14 @@ import { PricingCard, List, ListItem } from 'react-native-elements';
 
 class Overview extends Component {
   onButtonPress(name) {
-    Actions.PoolList(name)
+    Actions.PoolList(name);
   }
   render() {
     return (
-    <ScrollView style={{ backgroundColor: '#4f9deb', flex: 1 }}>
+    <ScrollView style={{ backgroundColor: 'white', flex: 1 }}>
         <PricingCard
           containerStyle={{
-            backgroundColor: '#2c3e50',
+            backgroundColor: '#00828F',
             borderRadius: 5,
             borderColor: '#2c3e50',
             marginTop: 50 }}

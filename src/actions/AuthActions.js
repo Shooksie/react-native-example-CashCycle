@@ -64,6 +64,7 @@ const loginUserSuccess = (dispatch, user) => {
   dispatch({
     type: LOGIN_USER_SUCCESS, payload: user
   });
+
 };
 const createUserSuccess = (dispatch, user, name, email, account) => {
   const { currentUser } = firebase.auth();

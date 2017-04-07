@@ -15,10 +15,10 @@ class Overview extends Component {
   render() {
     const balancer = (this.props.balance);
     return (
-    <ScrollView style={{ backgroundColor: '#4f9deb', flex: 1 }}>
+    <ScrollView style={{ backgroundColor: 'white', flex: 1 }}>
         <PricingCard
           containerStyle={{
-            backgroundColor: '#2c3e50',
+            backgroundColor: '#00828F',
             borderRadius: 5,
             borderColor: '#2c3e50',
             marginTop: 50 }}

@@ -74,6 +74,7 @@ import { Card, CardSection, Input, Spinner } from './common';
               onPress={this.onSignUpPress.bind(this)}
               buttonStyle={{ flex: 1, borderRadius: 5 }}
               backgroundColor="blue"
+
             />
           </CardSection>
          </Card>
@@ -94,6 +95,8 @@ const mapStateToProps = ({ auth }) => {
   return { email, password, error, loading };
 };
 
+
 export default connect(mapStateToProps, {
   emailChanged, passwordChanged, loginUser
+
 })(LoginForm);

@@ -13,7 +13,10 @@ const INITIAL_STATE = {
   password: '',
   user: null,
   error: '',
-  loading: false
+  loading: false,
+  account: {
+    balance: 0
+  }
 };
 
 export default (state = INITIAL_STATE, action) => {

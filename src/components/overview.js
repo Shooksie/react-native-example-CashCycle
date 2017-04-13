@@ -6,6 +6,10 @@ import { PricingCard, List, ListItem, Button } from 'react-native-elements';
 import { getBalance, depositChanged, deposit } from '../actions';
 
 class Overview extends Component {
+  componentWillMount() {
+    console.log('mounted');
+    this.props.getBalance();
+  }
   onButtonPress(name) {
     Actions.PoolList(name);
   }
@@ -32,7 +36,7 @@ class Overview extends Component {
         <Button
           onPress={() => this.onDepositPress()}
           borderRadius={5}
-          title="Deposit"
+          title="Deposit/Withdraw"
           backgroundColor="#27ae60"
         />
         <List containerStyle={{ backgroundColor: '#2c3e50', borderColor: '#2c3e50' }}>

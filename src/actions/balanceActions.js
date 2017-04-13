@@ -6,9 +6,10 @@ import {
 
 
 export const getBalance = () => {
+  console.log("here");
   const { currentUser } = firebase.auth();
-
   return (dispatch) => {
+    console.log('dispatching');
     firebase.database().ref(`/users/${currentUser.uid}/account`)
     .on('value', snapshot => {
       dispatch({ type: BALANCE_FETCH_SUCCESS, payload: snapshot.val() });

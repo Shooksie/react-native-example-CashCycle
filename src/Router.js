@@ -16,7 +16,7 @@ const RouterComponent = () => {
       <Scene key="main">
         <Scene key="overview" component={Overview} title="Overview" hideNavBar initial />
         <Scene key="PoolList" component={PoolList} title="PoolList" hideNavBar />
-        <Scene key="deposit" component={Sliders} title="Deposit" hideNavBar />
+        <Scene key="deposit" component={Sliders} title="Deposit" />
       </Scene>
     </Router>
   );

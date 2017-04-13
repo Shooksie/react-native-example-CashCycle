@@ -2,29 +2,45 @@ import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import {
   DEPOSIT,
+  WITHDRAW,
   DEPOSIT_CHANGED,
   DEPOSIT_FAIL,
   DEPOSIT_SUCCESS,
 } from './types';
 
 
-export const depositChanged = (text) => {
+export const depositChanged = ({ prop, value }) => {
   return {
     type: DEPOSIT_CHANGED,
-    payload: text
+    payload: { prop, value }
   };
 };
 
-export const deposit = ({ amount }) => {
+export const deposit = ({ amount, balance }) => {
   const { currentUser } = firebase.auth();
-  const balance = modify(amount);
-
+  const temp = Number(amount) + Number(balance);
+  const prop = 'balance';
+  balance = temp.toString();
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/account`)
-      .push({ balance })
+      .set({ balance })
       .then(() => {
-        dispatch({ type: DEPOSIT });
-        Actions.balanceList({ type: 'reset' });
+        dispatch({ type: DEPOSIT, payload: { prop: balance } });
+        Actions.overview();
+      });
+  };
+};
+export const withdraws = ({ withdraw, balance }) => {
+  const { currentUser } = firebase.auth();
+  const temp = Number(balance) - Number(withdraw);
+  const prop = 'balance';
+  balance = temp.toString();
+  return (dispatch) => {
+    firebase.database().ref(`/users/${currentUser.uid}/account`)
+      .set({ balance })
+      .then(() => {
+        dispatch({ type: DEPOSIT, payload: { prop: balance } });
+        Actions.overview();
       });
   };
 };

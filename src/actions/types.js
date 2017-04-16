@@ -20,3 +20,9 @@ export const DEPOSIT_SUCCESS = 'deposit_success';
 export const WITHDRAW_FAIL = 'withdraw_fail';
 export const DEPOSIT_FAIL = 'deposit_fail';
 export const BALANCE_FETCH_SUCCESS = 'BALANCE_FETCH';
+
+export const POOL_FETCH_SUCCESS = 'pool_fetch';
+export const POOL_INVEST = 'pool_invest';
+
+export const FETCH_STARTUPS = 'fetch_startups';
+export const STARTUP_FETCH = 'startup_fetch';

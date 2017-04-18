@@ -1,7 +1,6 @@
 import React from 'react';
 import { Scene, Router, Actions } from 'react-native-router-flux';
 import LoginForm from './components/LoginForm';
-import Overview from './components/overview';
 import PoolList from './components/PoolList';
 import SignUp from './components/signupfrom';
 import Sliders from './components/DepositPage';
@@ -17,7 +16,7 @@ const RouterComponent = () => {
       <Scene key="main">
         <Scene key="overview" component={MainPage} title="Overview" hideNavBar initial />
         <Scene key="PoolList" component={PoolList} title="PoolList" hideNavBar />
-        <Scene key="deposit" component={Sliders} title="Deposit" />
+        <Scene key="deposit" component={Sliders} title="Deposit" hideNavBar={false} />
       </Scene>
     </Router>
   );

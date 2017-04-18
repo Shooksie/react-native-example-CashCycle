@@ -9,7 +9,7 @@ import {
 
 export const poolFetch = () => {
     return (dispatch) => {
-      firebase.database().ref('/pools')
+      firebase.database().ref('/pools/')
       .on('value', snapshot => {
         dispatch({ type: POOL_FETCH_SUCCESS, payload: snapshot.val() });
       });

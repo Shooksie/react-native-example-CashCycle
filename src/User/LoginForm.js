@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { Button } from 'react-native-elements';
 import { emailChanged, passwordChanged, loginUser } from '../actions';
-import { Card, CardSection, Input, Spinner } from './common';
+import { Card, CardSection, Input, Spinner } from '../components/common';
 
  class LoginForm extends Component {
    onEmailChange(text) {
@@ -25,12 +25,13 @@ import { Card, CardSection, Input, Spinner } from './common';
      if (this.props.loading) {
        return <Spinner size="large" />;
      }
-     return (<Button
-              title="Login In"
-              onPress={this.onButtonPress.bind(this)}
-              buttonStyle={{ flex: 1, borderRadius: 5, }}
-              backgroundColor="green"
-            />
+     return (
+       <Button
+          title="Login In"
+          onPress={this.onButtonPress.bind(this)}
+          buttonStyle={{ flex: 1, borderRadius: 5, }}
+          backgroundColor="#27ae60"
+       />
             );
    }
    render() {
@@ -39,7 +40,7 @@ import { Card, CardSection, Input, Spinner } from './common';
          <View style={{ flex: 4, alignItems: 'center', marginBottom: 20 }} >
            <Image
              style={{ marginTop: 30, flex: 1, width: 170 }}
-             source={require('./img/logo.png')}
+             source={require('../img/logo.png')}
            />
          </View>
          <View style={{ flex: 4 }}>
@@ -73,7 +74,7 @@ import { Card, CardSection, Input, Spinner } from './common';
               title="Sign Up"
               onPress={this.onSignUpPress.bind(this)}
               buttonStyle={{ flex: 1, borderRadius: 5 }}
-              backgroundColor="blue"
+              backgroundColor="#4f9deb"
             />
           </CardSection>
          </Card>

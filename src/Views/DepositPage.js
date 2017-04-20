@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, ScrollView } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { FormLabel, FormInput, Button, PricingCard } from 'react-native-elements';
 import { getBalance, depositChanged, deposit, withdraws } from '../actions';
@@ -80,7 +79,7 @@ class Sliders extends Component {
               title='WITHDRAW'
               buttonStyle={{ backgroundColor: '#4f9deb', marginRight: 30, marginLeft: 30 }}
               onPress={this.onWithdrawPress.bind(this)}
-           />
+            />
           </View>
         </View>
       </View>

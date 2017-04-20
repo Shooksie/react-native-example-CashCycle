@@ -1,10 +1,10 @@
 import React from 'react';
-import { Scene, Router, Actions } from 'react-native-router-flux';
-import LoginForm from './components/LoginForm';
-import PoolList from './components/PoolList';
-import SignUp from './components/signupfrom';
-import Sliders from './components/DepositPage';
-import MainPage from './components/main';
+import { Scene, Router } from 'react-native-router-flux';
+import LoginForm from './User/LoginForm';
+import PoolList from './Views/PoolList';
+import SignUp from './User/signupfrom';
+import Sliders from './Views/DepositPage';
+import MainPage from './main';
 
 const RouterComponent = () => {
   return (

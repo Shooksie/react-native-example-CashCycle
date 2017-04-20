@@ -1,95 +1,161 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
   View,
-  processColor
+  processColor,
+  ScrollView
 } from 'react-native';
+import reactAddonsUpdate from 'react-addons-update';
+import { LineChart } from 'react-native-charts-wrapper';
 
-import {BarChart} from 'react-native-charts-wrapper';
+class LineChartScreen extends Component {
 
-const GREEN = processColor('#71BD6A');
-const RED = processColor('#D14B5A');
-
-class ZeroLineChartScreen extends React.Component {
-
-  constructor() {
-    super();
-
-    this.state = {
-      data: {
-        dataSets: [{
-          values: [{y: -224.1}, {y: 238.5}, {y: 1280.1}, {y: -442.3}, {y: -2280.1}],
-          label: 'Zero line dataset',
-          config: {
-            colors: [RED, GREEN, GREEN, RED, RED]
-          }
-        }],
-      },
-      xAxis: {
-        enabled: false
-      },
-      yAxis: {
-        left: {
-          drawLabels: false,
-          drawAxisLine: false,
-          drawGridLines: false,
-          zeroLine: {
-            enabled: true,
-            lineWidth: 1.5
+    state = {
+        data: {},
+        legend: {
+          enabled: true,
+          textColor: processColor('blue'),
+          textSize: 12,
+          position: 'BELOW_CHART_RIGHT',
+          form: 'SQUARE',
+          formSize: 14,
+          xEntrySpace: 10,
+          yEntrySpace: 5,
+          formToTextSpace: 5,
+          wordWrapEnabled: true,
+          maxSizePercent: 0.5,
+          custom: {
+            colors: [processColor('red'), processColor('blue'), processColor('green')],
+            labels: ['Company X', 'Company Y', 'Company Dashed']
           }
         },
-        right: {
-          enabled: false
-        }
-      }
-    };
-  }
+        marker: {
+          enabled: true,
+          backgroundTint: processColor('teal'),
+          markerColor: processColor('#F0C0FF8C'),
+          textColor: processColor('white'),
 
-  handleSelect(event) {
-    const entry = event.nativeEvent
-    if (entry == null) {
-      this.setState({ ...this.state, selectedEntry: null })
-    } else {
-      this.setState({ ...this.state, selectedEntry: JSON.stringify(entry) })
+        }
+      };
+
+    componentDidMount() {
+      this.setState(
+        reactAddonsUpdate(this.state, {
+          data: {
+            $set: {
+              dataSets: [{
+                values: [{ y: 100 }, { y: 110 }, { y: 105 }, { y: 115 }],
+                label: 'Company X',
+                config: {
+                  lineWidth: 2,
+                  drawCircles: false,
+                  highlightColor: processColor('red'),
+                  color: processColor('red'),
+                  drawFilled: true,
+                  fillColor: processColor('red'),
+                  fillAlpha: 60,
+                  valueTextSize: 15,
+                  valueFormatter: '##.000',
+                  dashedLine: {
+                    lineLength: 20,
+                    spaceLength: 20
+                  }
+                }
+              }, {
+                values: [{ y: 90 }, { y: 130 }, { y: 100 }, { y: 105 }],
+                label: 'Company Y',
+                config: {
+                  lineWidth: 1,
+                  drawCubicIntensity: 0.4,
+                  circleRadius: 5,
+                  drawHighlightIndicators: false,
+                  color: processColor('blue'),
+                  drawFilled: true,
+                  fillColor: processColor('blue'),
+                  fillAlpha: 45,
+                  circleColor: processColor('blue')
+                }
+              }, {
+                values: [{ y: 110 }, { y: 105 }, { y: 115 }, { y: 110 }],
+                label: 'Company Dashed',
+                config: {
+                  color: processColor('green'),
+                  drawFilled: true,
+                  fillColor: processColor('green'),
+                  fillAlpha: 50
+                }
+              }],
+            }
+          },
+          xAxis: {
+            $set: {
+              valueFormatter: ['Q1', 'Q2', 'Q3', 'Q4']
+            }
+          }
+        })
+      );
+    }
+
+    handleSelect(event) {
+      const entry = event.nativeEvent;
+      if (entry == null) {
+        this.setState({ ...this.state, selectedEntry: null });
+      } else {
+        this.setState({ ...this.state, selectedEntry: JSON.stringify(entry) });
+      }
+    }
+
+    render() {
+      return (
+        <View style={{ flex: 1 }}>
+
+          <View style={{ height: 80 }}>
+            <Text> selected entry</Text>
+            <Text> {this.state.selectedEntry}</Text>
+          </View>
+
+          <View style={styles.container}>
+            <LineChart
+              style={styles.chart}
+              data={this.state.data}
+              description={{ text: '' }}
+              legend={this.state.legend}
+              marker={this.state.marker}
+              xAxis={this.state.xAxis}
+              drawGridBackground={false}
+              borderColor={processColor('teal')}
+              borderWidth={1}
+              drawBorders
+              touchEnabled
+              dragEnabled
+              scaleEnabled
+              scaleXEnabled
+              scaleYEnabled
+              pinchZoom
+              doubleTapToZoomEnabled
+
+              dragDecelerationEnabled
+              dragDecelerationFrictionCoef={0.99}
+
+              keepPositionOnRotation={false}
+              onSelect={this.handleSelect.bind(this)}
+            />
+          </View>
+
+        </View>
+      );
     }
   }
 
-  render() {
-    return (
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#F5FCFF'
+    },
+    chart: {
+      flex: 1
+    }
+  });
 
-      <View style={{flex: 1}}>
-
-        <View style={{height:80}}>
-          <Text> selected entry</Text>
-          <Text> {this.state.selectedEntry}</Text>
-        </View>
-
-        <View style={styles.container}>
-          <BarChart
-            style={styles.chart}
-            data={this.state.data}
-            xAxis={this.state.xAxis}
-            yAxis={this.state.yAxis}
-            description={{text: ''}}
-            legend={{enabled: false}}
-            onSelect={this.handleSelect.bind(this)}
-          />
-        </View>
-
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F5FCFF'
-  },
-  chart: {
-    flex: 1
-  }
-});
-
-export default ZeroLineChartScreen;
+  export default LineChartScreen;

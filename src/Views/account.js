@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Text } from 'react-native';
+import { Text, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import { getBalance, depositChanged, deposit, withdraws } from '../actions';
-import ZeroLineChartScreen from './review';
 
 class Account extends Component {
   onAmountChange(value) {
@@ -19,15 +18,7 @@ class Account extends Component {
   render() {
   return (
       <ScrollView style={{ backgroundColor: '#4f9deb', flex: 1 }}>
-      <View
-        style={{
-          flex: 1,
-        }}
-      >
-        <View style={{ flex: 1 }}>
-          <ZeroLineChartScreen />
-        </View>
-      </View>
+          <Text>Hello World</Text>
       </ScrollView>
    );
  }

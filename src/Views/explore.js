@@ -2,9 +2,9 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ListView, ScrollView } from 'react-native';
-import { SearchBar, PricingCard } from 'react-native-elements'
+import { PricingCard } from 'react-native-elements';
 import { poolFetch } from '../actions';
-import StartupItem from './StartupItem';
+import PoolItem from '../components/PoolItem';
 
 class Explore extends Component {
   componentWillMount() {
@@ -12,7 +12,6 @@ class Explore extends Component {
     this.createDataSource(this.props);
   }
   componentWillReceiveProps(nextProps) {
-      console.log(nextProps);
       this.createDataSource(nextProps);
   }
   createDataSource({ pools }) {
@@ -23,12 +22,26 @@ class Explore extends Component {
         this.dataSource = ds.cloneWithRows(pools);
   }
   renderRow(pool) {
-    return <StartupItem startup={pool} />;
+    console.log(this.pool);
+    return <PoolItem pool={pool} />;
   }
   render() {
     const balancer = (this.props.balance);
     return (
     <ScrollView style={{ backgroundColor: '#4f9deb', flex: 1 }}>
+    <PricingCard
+      containerStyle={{
+        backgroundColor: '#2c3e50',
+        borderRadius: 5,
+        borderColor: '#2c3e50',
+        marginTop: 20 }}
+      priceStyle={{ color: '#95a5a6' }}
+      color='#4f9deb'
+      title='Current Account'
+      price={balancer}
+      info={['you currently have']}
+      button={{ title: 'INVEST', icon: 'flight-takeoff' }}
+    />
     <ListView
       style={{ borderColor: '#2c3e50' }}
       enableEmptySections

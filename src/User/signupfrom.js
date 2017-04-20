@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { Button } from 'react-native-elements';
 import { emailChanged, passwordChanged, nameChanged, createUser } from '../actions';
-import { Card, CardSection, Input, Spinner } from './common';
+import { Card, CardSection, Input, Spinner } from '../components/common';
 
  class SignUp extends Component {
    onEmailChange(text) {
@@ -27,12 +27,14 @@ import { Card, CardSection, Input, Spinner } from './common';
      if (this.props.loading) {
        return <Spinner size="large" />;
      }
-     return (<Button
-              title="Sign Up"
-              onPress={this.onButtonPress.bind(this)}
-              buttonStyle={{ flex: 1, borderRadius: 5 }}
-              backgroundColor="blue"
-             />);
+     return (
+       <Button
+          title="Sign Up"
+          onPress={this.onButtonPress.bind(this)}
+          buttonStyle={{ flex: 1, borderRadius: 5 }}
+          backgroundColor="#4f9deb"
+       />
+            );
    }
    render() {
      return (
@@ -77,7 +79,8 @@ import { Card, CardSection, Input, Spinner } from './common';
           title="Login"
           onPress={this.onLoginPress.bind(this)}
           buttonStyle={{ flex: 1, borderRadius: 5, }}
-          backgroundColor="green" />
+          backgroundColor="#27ae60"
+          />
         </CardSection>
        </Card>
      );

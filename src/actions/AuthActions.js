@@ -34,11 +34,10 @@ export const nameChanged = (text) => {
 
 export const loginUser = ({ email, password }) => {
     return (dispatch) => {
-    dispatch({ type: LOGIN_USER });
-
     firebase.auth().signInWithEmailAndPassword(email, password)
     .then(user => loginUserSuccess(dispatch, user))
     .catch(() => loginUserFail(dispatch));
+    Actions.main();
   };
 };
 
@@ -49,19 +48,13 @@ export const signup = () => {
 };
 
 export const createUser = ({ email, password, name }) => {
+  const account = 0;
   return (dispatch) => {
   dispatch({ type: LOGIN_USER });
-
   firebase.auth().createUserWithEmailAndPassword(email, password)
-  .then(user => loginUserSuccess(dispatch, user))
+  .then(user => createUserSuccess(dispatch, user, name, account))
   .catch(() => loginUserFail(dispatch));
-  firebase.auth().signInWithEmailAndPassword(email, password)
-  .then(user => loginUserSuccess(dispatch, user));
-  const { currentUser } = firebase.auth();
-  firebase.database().ref(`/users/${currentUser.uid}/info`)
-    .set({
-      username: name, Email: email
-    });
+  Actions.main();
   };
 };
 const loginUserFail = (dispatch) => {
@@ -72,5 +65,13 @@ const loginUserSuccess = (dispatch, user) => {
     type: LOGIN_USER_SUCCESS, payload: user
   });
 
-  Actions.overview();
+};
+const createUserSuccess = (dispatch, user, name, email, account) => {
+  const { currentUser } = firebase.auth();
+  firebase.database().ref(`/users/${currentUser.uid}/`)
+    .set({ name, email, account });
+  Actions.main();
+  dispatch({
+        type: LOGIN_USER_SUCCESS, payload: user
+  });
 };

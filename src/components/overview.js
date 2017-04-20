@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import { ScrollView } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { PricingCard, List, ListItem } from 'react-native-elements';
+import { connect } from 'react-redux';
+import { PricingCard, List, ListItem, Button } from 'react-native-elements';
+import { getBalance, depositChanged, deposit } from '../actions';
 
 class Overview extends Component {
   onButtonPress(name) {
     Actions.PoolList(name);
   }
+  onDepositPress() {
+    Actions.deposit();
+  }
   render() {
+    const balancer = (this.props.balance);
     return (
     <ScrollView style={{ backgroundColor: 'white', flex: 1 }}>
         <PricingCard
@@ -19,9 +25,15 @@ class Overview extends Component {
           priceStyle={{ color: '#95a5a6' }}
           color='#4f9deb'
           title='Current Account'
-          price='$200000'
+          price={balancer}
           info={['you currently have']}
           button={{ title: 'INVEST', icon: 'flight-takeoff' }}
+        />
+        <Button
+          onPress={() => this.onDepositPress()}
+          borderRadius={5}
+          title="Deposit"
+          backgroundColor="#27ae60"
         />
         <List containerStyle={{ backgroundColor: '#2c3e50', borderColor: '#2c3e50' }}>
           <ListItem
@@ -119,5 +131,11 @@ class Overview extends Component {
   );
   }
 }
+const mapStateToProps = (state) => {
+  const { balance, amount } = state.balance;
+  return { balance, amount };
+};
 
-export default Overview;
+export default connect(mapStateToProps, {
+   getBalance, depositChanged, deposit
+})(Overview);

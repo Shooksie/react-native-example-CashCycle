@@ -8,24 +8,25 @@ import { fetchstartup } from '../actions';
 
 
 class StartupItem extends Component {
-  state = { name: '', desc: '', valuation: 0 }
+  state = { name: '', desc: '', valuation: 0 };
   componentWillReceiveProps() {
     const { uid } = this.props.startups;
-    const { name, valuation , desc } = this.props.startup[uid];
-    this.setState({ name: name });
+    const X = (this.props.startup.startups[uid]);
+    const { name } = X;
+    this.setState({ name: <Text>{name}</Text> });
   }
   onButtonPress() {
     Actions.startup();
   }
 
   render() {
-      console.log(this.props);
-
+      const name = this.state.name;
+      console.log(name);
       return (
           <ListItem
           key='1'
-          title={name}
-          subtitle={'subtitle'}
+          title="name"
+          subtitle={name}
           containerStyle={{ backgroundColor: '#2c3e50',
                             borderColor: '#2c3e50',
                             borderWidth: 0,

@@ -1,15 +1,15 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-import { ListView, ScrollView } from 'react-native';
+import { ListView, ScrollView, Text } from 'react-native';
 import { connect } from 'react-redux';
 //import { Actions } from 'react-native-router-flux';
 import { Card } from 'react-native-elements';
+import { Spinner } from '../components/common';
 import { startupfetch, fetchstartup } from '../actions';
 import StartupItem from '../components/StartupItem';
 
 class PoolList extends Component {
   componentWillMount() {
-    this.props.startupfetch();
     this.props.fetchstartup();
     this.createDataSource(this.props);
   }
@@ -26,9 +26,19 @@ class PoolList extends Component {
   renderRow(startup) {
     return <StartupItem startups={startup} />;
   }
+  renderList() {
+    if (this.props.loading) {
+      return <Spinner size="large" />;
+    }
+    return (
+      <ListView
+        style={{ borderColor: '#2c3e50' }}
+        enableEmptySections
+        dataSource={this.dataSource}
+        renderRow={this.renderRow}
+      />);
+  }
   render() {
-      console.log(this.pops);
-      const { name } = this.props;
       return (
       <ScrollView
       style={{
@@ -49,14 +59,9 @@ class PoolList extends Component {
                             borderRadius: 10
                           }}
           dividerStyle={{ marginRight: 5, marginLeft: 5 }}
-          title={name}
+          title="name"
         >
-        <ListView
-          style={{ borderColor: '#2c3e50' }}
-          enableEmptySections
-          dataSource={this.dataSource}
-          renderRow={this.renderRow}
-        />
+        {this.renderList()}
         </Card>
       </ScrollView>
     );
@@ -68,9 +73,9 @@ const mapStateToProps = state => {
   const pools = _.map(state.startups, (val, uid) => {
       return { ...val, uid };
     });
-  console.log(pools);
   const { balance } = state.balance;
-    return { pools, balance };
+  const { loading } = state.startup;
+    return { pools, balance, loading };
 };
 
 export default connect(mapStateToProps, { startupfetch, fetchstartup })(PoolList);

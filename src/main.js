@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { SearchBar, Tabs, Tab, Icon } from 'react-native-elements';
-import { getBalance, depositChanged, deposit } from './actions';
+import { getBalance, depositChanged, deposit, fetchstartup } from './actions';
 import Overview from './Views/overview';
 import Account from './Views/account';
 import Explore from './Views/explore';
@@ -10,6 +10,7 @@ import Explore from './Views/explore';
 class MainPage extends Component {
   state = { selectedTab: 'overview', value: '' };
   componentWillMount() {
+    this.props.fetchstartup();
     this.props.getBalance();
   }
    onChanges(value) {
@@ -106,5 +107,5 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-   getBalance, depositChanged, deposit
+   getBalance, depositChanged, deposit, fetchstartup
 })(MainPage);

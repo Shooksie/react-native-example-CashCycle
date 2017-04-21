@@ -7,7 +7,7 @@ class PoolItem extends Component {
    return {
      progress: 0
    };
- },
+  }
   render() {
     return (
       <View style={{ height: 80 }}>

@@ -31,6 +31,7 @@ export const deposit = ({ amount, balance }) => {
   };
 };
 export const withdraws = ({ withdraw, balance }) => {
+  console.log(withdraw, balance);
   const { currentUser } = firebase.auth();
   const temp = Number(balance) - Number(withdraw);
   const prop = 'balance';

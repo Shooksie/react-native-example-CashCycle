@@ -15,35 +15,26 @@ class Overview extends Component {
   render() {
     const balancer = (this.props.balance);
     return (
-    <ScrollView style={{ backgroundColor: '#4f9deb', flex: 1 }}>
+    <ScrollView style={{ flex: 1 }}>
     <PricingCard
       containerStyle={{
-        backgroundColor: '#2c3e50',
         borderRadius: 5,
-        borderColor: '#2c3e50',
         marginTop: 20 }}
       priceStyle={{ color: '#95a5a6' }}
       color='#4f9deb'
       title='Current Account'
       price={balancer}
       info={['you currently have']}
-      button={{ title: 'INVEST', icon: 'flight-takeoff' }}
+      button={{ title: 'Deposit/Withdraw', icon: 'local-atm' }}
+      onButtonPress={() => this.onDepositPress()}
     />
-        <Button
-          onPress={() => this.onDepositPress()}
-          borderRadius={5}
-          title="Deposit/Withdraw"
-          backgroundColor="#27ae60"
-        />
-        <List containerStyle={{ backgroundColor: '#2c3e50', borderColor: '#2c3e50' }}>
+        <List containerStyle={{marginRight: 15, marginLeft: 15}}>
           <ListItem
           key='1'
           title='No Investments so far'
           subtitle='ownership: 0% Value: 0'
-          containerStyle={{ backgroundColor: '#2c3e50',
-                            borderColor: '#2c3e50',
-                            borderWidth: 0,
-                            borderBottomColor: '#2c3e50'
+          containerStyle={{
+                          borderWidth: 0,
                            }}
           titleStyle={{ color: 'white' }}
           />

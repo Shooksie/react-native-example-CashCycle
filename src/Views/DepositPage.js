@@ -20,20 +20,15 @@ class Sliders extends Component {
     const x = this.props.amount;
     const y = this.props.withdraw;
   return (
-      <ScrollView style={{ backgroundColor: '#4f9deb', flex: 1 }}>
+      <ScrollView style={{ flex: 1 }}>
       <View
         style={{
           flex: 1,
-          paddingLeft: 10,
-          paddingRight: 10
         }}
       >
         <View style={{ flex: 1 }}>
           <PricingCard
             containerStyle={{
-              backgroundColor: '#2c3e50',
-              borderRadius: 5,
-              borderColor: '#2c3e50',
               marginTop: 50 }}
             priceStyle={{ color: '#95a5a6' }}
             color='#4f9deb'
@@ -45,20 +40,18 @@ class Sliders extends Component {
         </View>
         <View
           style={{
-            backgroundColor: '#2c3e50',
             flex: 2,
             paddingBottom: 20,
             borderRadius: 5,
             marginRight: 15,
             marginLeft: 15 }}
         >
-          <View style={{ marginRight: 15, marginLeft: 15 }}>
+          <View style={{ marginRight: 5, marginLeft: 5}}>
             <FormLabel labelStyle={{ color: '#4f9deb' }}>Deposit</FormLabel>
             <FormInput
               placeholder={'$'}
               keyboardType={'numeric'}
               value={x}
-              inputStyle={{ color: 'white' }}
               onChangeText={value => this.props.depositChanged({ prop: 'amount', value })}
             />
             <Button
@@ -77,7 +70,7 @@ class Sliders extends Component {
             />
             <Button
               title='WITHDRAW'
-              buttonStyle={{ backgroundColor: '#4f9deb', marginRight: 30, marginLeft: 30 }}
+              buttonStyle={{ backgroundColor: '#4f9deb'}}
               onPress={this.onWithdrawPress.bind(this)}
             />
           </View>

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Text, ScrollView } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
+import { PricingCard, List, ListItem, Button } from 'react-native-elements';
 import { getBalance, depositChanged, deposit, withdraws } from '../actions';
 
 class Account extends Component {
@@ -16,9 +18,21 @@ class Account extends Component {
     this.props.withdraws({ withdraw, balance });
   }
   render() {
+    const balancer = (this.props.balance);  
   return (
-      <ScrollView style={{ backgroundColor: '#4f9deb', flex: 1 }}>
-          <Text>Hello World</Text>
+      <ScrollView style={{ flex: 1 }}>
+        <PricingCard
+          containerStyle={{
+            borderRadius: 5,
+            marginTop: 20 }}
+          priceStyle={{ color: '#95a5a6' }}
+          color='#4f9deb'
+          title='Current Account'
+          price={balancer}
+          info={['you currently have']}
+          button={{ title: 'Deposit/Withdraw', icon: 'local-atm' }}
+          onButtonPress={() => this.onDepositPress()}
+        />
       </ScrollView>
    );
  }

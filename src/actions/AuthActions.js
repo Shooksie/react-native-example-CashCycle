@@ -55,7 +55,6 @@ export const signup = () => {
 };
 
 export const createUser = ({ email, password, name }) => {
-  console.log(email, password, name);
   const account = { balance: '0' };
   return (dispatch) => {
   dispatch({ type: LOGIN_USER });

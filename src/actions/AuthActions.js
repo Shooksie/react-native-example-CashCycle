@@ -79,8 +79,8 @@ const loginUserFail = (dispatch) => {
   dispatch({ type: LOGIN_USER_FAIL });
 };
 const loginUserSuccess = (dispatch, user) => {
-  Actions.main();
   dispatch({
     type: LOGIN_USER_SUCCESS, payload: user
   });
+  Actions.main();
 };

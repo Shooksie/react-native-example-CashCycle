@@ -31,7 +31,7 @@
     "react-native-selectme": "^1.2.0",
     "react-native-share": "^1.0.19",
     "react-native-tab-navigator": "^0.3.3",
-    "react-native-vector-icons": "^4.0.1",
+    "react-native-vector-icons": "^4.0.0",
     "react-redux": "^5.0.2",
     "react-static-container": "^1.0.1",
     "redux": "^3.6.0",

@@ -17,7 +17,8 @@ Targted audience is people that would like to invest small portions of their mon
   <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screen%20Shot%202017-04-22%20at%207.07.00%20PM.png" width="350"/>
 </p>
 <p align="center">
-  <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screen%20Shot%202017-04-22%20at%206.59.46%20PM.png" width="350"/>
+  https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screen%20Shot%202017-04-22%20at%207.13.32%20PM.png
+  <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screen%20Shot%202017-04-22%20at%207.13.32%20PM.png" width="350"/>
   <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screen%20Shot%202017-04-22%20at%206.59.39%20PM.png" width="350"/>
 </p>
 <h2 align="left" >
@@ -25,7 +26,7 @@ Targted audience is people that would like to invest small portions of their mon
 </h2>
 
 <p align="center">
-  <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screen%20Shot%202017-04-22%20at%207.13.32%20PM.png" width="350"/>
+  <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screen%20Shot%202017-04-22%20at%206.59.46%20PM.png" width="350"/>
   <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screen%20Shot%202017-04-22%20at%207.10.47%20PM.png" width="350"/>
 </p>
 

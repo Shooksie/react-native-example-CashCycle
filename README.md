@@ -13,20 +13,20 @@ Targted audience is people that would like to invest small portions of their mon
     Login Page
 </h2>
 <p align="center">
-  <img src="https://drive.google.com/drive/u/0/folders/0Bx8aqrpSkuq4VU9uR2E0aGZ2LXc" width="350"/>
-  <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screenshot_20170218-104210.png" width="350"/>
+  <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screen%20Shot%202017-04-22%20at%206.59.16%20PM.png" width="350"/>
+  <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screen%20Shot%202017-04-22%20at%207.07.00%20PM.png" width="350"/>
 </p>
 <p align="center">
-  <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screenshot_20170218-104252.png?raw=true" width="350"/>
-  <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screenshot_20170218-104235.png?raw=true" width="350"/>
+  <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screen%20Shot%202017-04-22%20at%206.59.46%20PM.png" width="350"/>
+  <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screen%20Shot%202017-04-22%20at%206.59.39%20PM.png" width="350"/>
 </p>
 <h2 align="left" >
     How the image feed will be designed
 </h2>
 
 <p align="center">
-  <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screenshot_20170218-104303.png?raw=true" width="350"/>
-  <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screenshot_20170218-104308.png?raw=true" width="350"/>
+  <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screen%20Shot%202017-04-22%20at%206.59.32%20PM.png" width="350"/>
+  <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screen%20Shot%202017-04-22%20at%207.10.47%20PM.png" width="350"/>
 </p>
 
 <h2 align="left" >

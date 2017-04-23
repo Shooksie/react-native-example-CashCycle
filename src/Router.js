@@ -6,6 +6,7 @@ import SignUp from './User/signupfrom';
 import Sliders from './Views/DepositPage';
 import MainPage from './main';
 
+
 const RouterComponent = () => {
   return (
     <Router sceneStyle={{ marginBottom: 0 }}>

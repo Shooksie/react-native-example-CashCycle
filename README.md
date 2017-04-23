@@ -36,15 +36,5 @@ Targted audience is people that would like to invest small portions of their mon
   <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screenshot_20170218-104316.png?raw=true" width="350"/>
   <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screenshot_20170218-104319.png?raw=true" width="350"/>
 </p>
-<h2 align="left" >
-    Actual App
-</h2>
-<p align="center">
-  <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screenshot_20170313-183245.png" width="350"/>
-  <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screenshot_20170313-183252.png" width="350"/>
-</p>
-<p align="center">
-  <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screenshot_20170313-183259.png" width="350"/>
-</p>
 
   

@@ -15,7 +15,7 @@ const RouterComponent = () => {
       </Scene>
       <Scene key="main">
         <Scene key="overview" component={MainPage} title="Overview" hideNavBar initial />
-        <Scene key="PoolList" component={PoolList} title="PoolList" hideNavBar />
+        <Scene key="PoolList" component={PoolList} title="PoolList" hideNavBar={false} />
         <Scene key="deposit" component={Sliders} title="Deposit" hideNavBar={false} />
       </Scene>
     </Router>

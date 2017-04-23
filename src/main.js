@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { SearchBar, Tabs, Tab, Icon } from 'react-native-elements';
-import { getBalance, depositChanged, deposit, fetchstartup } from './actions';
+import { getBalance, depositChanged, deposit } from './actions';
 import Overview from './Views/overview';
 import Account from './Views/account';
 import Explore from './Views/explore';
 
 class MainPage extends Component {
-  state = { selectedTab: 'overview', value: '' };
+  state = { selectedTab: 'home', value: '' };
   componentWillMount() {
-    this.props.fetchstartup();
     this.props.getBalance();
   }
    onChanges(value) {
@@ -22,11 +21,12 @@ class MainPage extends Component {
   render() {
     const { selectedTab } = this.state;
     return (
-        <View style={{ backgroundColor: '#4f9deb', flex: 1 }}>
+        <View style={{ flex: 1 }}>
 
         <SearchBar
-          containerStyle={{ backgroundColor: '#2c3e50', borderColor: '#2c3e50' }}
+          containerStyle={{ borderColor: '#2c3e50', marginTop: 20 }}
           round
+          lightTheme
           value={this.state.value}
           onChangeText={this.onChanges.bind(this)}
           placeholder='Type Here...'
@@ -36,8 +36,8 @@ class MainPage extends Component {
           <Tab
             titleStyle={{ fontWeight: 'bold', fontSize: 10 }}
             selectedTitleStyle={{ marginTop: -1, marginBottom: 6 }}
-            selected={selectedTab === 'overview'}
-            title={selectedTab === 'overview' ? 'overview' : null}
+            selected={selectedTab === 'home'}
+            title={selectedTab === 'home' ? 'home' : null}
             renderIcon={() =>
                <Icon
                    containerStyle={{
@@ -45,14 +45,14 @@ class MainPage extends Component {
                      alignItems: 'center',
                      marginTop: 12 }}
                      color={'#5e6977'}
-                     name='whatshot'
+                     name='home'
                      size={33}
               />
               }
-            renderSelectedIcon={() => <Icon color={'#6296f9'} name='whatshot' size={30} />}
-            onPress={() => this.changeTab('overview')}
+            renderSelectedIcon={() => <Icon color={'#6296f9'} name='home' size={30} />}
+            onPress={() => this.changeTab('home')}
           >
-            <Overview />
+          <Overview />
           </Tab>
           <Tab
             titleStyle={{ fontWeight: 'bold', fontSize: 10 }}
@@ -107,5 +107,5 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-   getBalance, depositChanged, deposit, fetchstartup
+   getBalance, depositChanged, deposit
 })(MainPage);

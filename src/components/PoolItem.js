@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { ListItem } from 'react-native-elements';
-import { poolstartup } from '../actions';
+import { poolstartup, poolInfo } from '../actions';
 
 
 class PoolItem extends Component {
   onButtonPress(uid) {
-    console.log(uid.startups);
+    this.props.poolInfo(this.props.pool);
     this.props.poolstartup(uid.startups);
     Actions.PoolList();
   }
@@ -19,12 +19,8 @@ class PoolItem extends Component {
           key='1'
           title={category}
           subtitle={subtitle}
-          containerStyle={{ backgroundColor: '#2c3e50',
-                            borderColor: '#2c3e50',
-                            borderWidth: 0,
-                            borderBottomColor: '#2c3e50'
+          containerStyle={{
                            }}
-          titleStyle={{ color: 'white' }}
           onPress={() => this.onButtonPress(this.props.pool)}
           />
       );
@@ -37,4 +33,4 @@ const mapStateToProps = state => {
 };
 
 
-export default connect(mapStateToProps, { poolstartup })(PoolItem);
+export default connect(mapStateToProps, { poolstartup, poolInfo })(PoolItem);

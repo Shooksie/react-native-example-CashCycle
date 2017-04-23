@@ -29,7 +29,7 @@ import { Card, CardSection, Input, Spinner } from '../components/common';
        <Button
           title="Login In"
           onPress={this.onButtonPress.bind(this)}
-          buttonStyle={{ flex: 1, borderRadius: 5, }}
+          buttonStyle={{ borderRadius: 5, }}
           backgroundColor="#27ae60"
        />
             );
@@ -66,17 +66,17 @@ import { Card, CardSection, Input, Spinner } from '../components/common';
           <Text style={styles.errorTextStyle}>
           {this.props.error}
           </Text>
-          <CardSection>
+          <View style={{ marginBottom: 5}}>
             {this.renderButton()}
-          </CardSection>
-          <CardSection>
+          </View>
+            <View>
             <Button
               title="Sign Up"
               onPress={this.onSignUpPress.bind(this)}
-              buttonStyle={{ flex: 1, borderRadius: 5 }}
+              buttonStyle={{ borderRadius: 5 }}
               backgroundColor="#4f9deb"
             />
-          </CardSection>
+            </View>
          </Card>
        </View>
        </View>

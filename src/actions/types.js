@@ -23,6 +23,8 @@ export const BALANCE_FETCH_SUCCESS = 'BALANCE_FETCH';
 
 export const POOL_FETCH_SUCCESS = 'pool_fetch';
 export const POOL_INVEST = 'pool_invest';
+export const POOL_INFO = 'pool_info';
+export const INVESEMENT_AMOUNT = 'investment_amount';
 
 export const FETCH_STARTUPS = 'fetch_startups';
 export const STARTUP_FETCH = 'startup_fetch';

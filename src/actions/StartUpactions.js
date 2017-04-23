@@ -7,6 +7,7 @@ export const fetchstartup = () => {
   return (dispatch) => {
     firebase.database().ref('/startups/')
     .on('value', snapshot => {
+      console.log(snapshot.val());
       dispatch({ type: STARTUP_FETCH, payload: snapshot.val() });
     });
   };
@@ -14,13 +15,11 @@ export const fetchstartup = () => {
 
 export const poolstartup = (values) => {
   return (dispatch) => {
-    console.log(values);
     dispatch({ type: FETCH_STARTUPS, payload: values });
   };
 };
 
 export const startupfetch = (uid) => {
-  console.log(uid);
   return (dispatch) => {
     firebase.database().ref(`/pools/${uid}/startups/`)
     .on('value', snapshot => {

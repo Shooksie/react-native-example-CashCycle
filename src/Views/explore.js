@@ -2,13 +2,15 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ListView, ScrollView } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import { PricingCard } from 'react-native-elements';
-import { poolFetch } from '../actions';
+import { poolFetch, fetchstartup } from '../actions';
 import PoolItem from '../components/PoolItem';
 
 class Explore extends Component {
   componentWillMount() {
     this.props.poolFetch();
+    this.props.fetchstartup();
     this.createDataSource(this.props);
   }
   componentWillReceiveProps(nextProps) {
@@ -22,28 +24,29 @@ class Explore extends Component {
         this.dataSource = ds.cloneWithRows(pools);
   }
   renderRow(pool) {
-    console.log(this.pool);
     return <PoolItem pool={pool} />;
+  }
+  onDepositPress() {
+    Actions.deposit();
   }
   render() {
     const balancer = (this.props.balance);
     return (
-    <ScrollView style={{ backgroundColor: '#4f9deb', flex: 1 }}>
+    <ScrollView style={{flex: 1 }}>
     <PricingCard
       containerStyle={{
-        backgroundColor: '#2c3e50',
         borderRadius: 5,
-        borderColor: '#2c3e50',
         marginTop: 20 }}
       priceStyle={{ color: '#95a5a6' }}
       color='#4f9deb'
       title='Current Account'
       price={balancer}
       info={['you currently have']}
-      button={{ title: 'INVEST', icon: 'flight-takeoff' }}
+      button={{ title: 'Deposit/Withdraw', icon: 'local-atm' }}
+      onButtonPress={() => this.onDepositPress()}
     />
     <ListView
-      style={{ borderColor: '#2c3e50' }}
+      style={{ marginLeft: 15, marginRight: 15}}
       enableEmptySections
       dataSource={this.dataSource}
       renderRow={this.renderRow}
@@ -53,7 +56,7 @@ class Explore extends Component {
   }
 }
 const mapStateToProps = state => {
-  const pools = _.map(state.pools, (val, uid) => {
+  const pools = _.map(state.pools.pool, (val, uid) => {
       return { ...val, uid };
     });
   const { balance } = state.balance;
@@ -61,4 +64,4 @@ const mapStateToProps = state => {
 };
 
 
-export default connect(mapStateToProps, { poolFetch })(Explore);
+export default connect(mapStateToProps, { poolFetch, fetchstartup })(Explore);

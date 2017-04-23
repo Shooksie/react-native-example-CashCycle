@@ -68,8 +68,6 @@ export const createUser = ({ email, password, name }) => {
   firebase.auth().onAuthStateChanged(() => {
       const { currentUser } = firebase.auth();
       if (email === currentUser.email) {
-        console.log(email);
-        console.log(currentUser);
         firebase.database().ref(`/users/${currentUser.uid}/`)
           .set({ name, email, account });
         Actions.main();
@@ -81,8 +79,8 @@ const loginUserFail = (dispatch) => {
   dispatch({ type: LOGIN_USER_FAIL });
 };
 const loginUserSuccess = (dispatch, user) => {
+  Actions.main();
   dispatch({
     type: LOGIN_USER_SUCCESS, payload: user
   });
-  Actions.overview();
 };

@@ -3,7 +3,7 @@ Project App for CS449:
 CS449Project
 
 CashCycle is a savings app that aims to allow people to put money they want to invest or save.
-Targted audience is pthat wanna be able eople who want to invest 
+Targted audience is people that would like to invest small portions of their money.
 
 <h1 align="center">
  Screenshots
@@ -13,7 +13,7 @@ Targted audience is pthat wanna be able eople who want to invest
     Login Page
 </h2>
 <p align="center">
-  <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screenshot_20170218-104146.png" width="350"/>
+  <img src="https://drive.google.com/drive/u/0/folders/0Bx8aqrpSkuq4VU9uR2E0aGZ2LXc" width="350"/>
   <img src="https://github.com/Shooskie/CS449Project/blob/master/App%20screenshots/Screenshot_20170218-104210.png" width="350"/>
 </p>
 <p align="center">

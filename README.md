@@ -5,6 +5,19 @@ CS449Project
 CashCycle is a savings app that aims to allow people to put money they want to invest or save.
 Targted audience is people that would like to invest small portions of their money.
 
+To clone:
+```
+git https://github.com/Shooskie/CashCycle.git<br>
+```
+to run app you need to have node.js, react-native cli, android emulator, xcode.<br>
+```
+node: https://nodejs.org/en/<br>
+react-native: https://facebook.github.io/react-native/
+```
+once node, and react-native are installed navigate to project directory in terminal and run 
+```
+npm install
+```
 <h1 align="center">
  Screenshots
 </h1>

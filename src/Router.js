@@ -1,10 +1,11 @@
 import React from 'react';
 import { Scene, Router } from 'react-native-router-flux';
-import LoginForm from './components/LoginForm';
-import Overview from './components/overview';
-import PoolList from './components/PoolList';
-import SignUp from './components/signupfrom';
-import Sliders from './components/DepositPage'
+import LoginForm from './User/LoginForm';
+import PoolList from './Views/PoolList';
+import SignUp from './User/signupfrom';
+import Sliders from './Views/DepositPage';
+import MainPage from './main';
+
 
 const RouterComponent = () => {
   return (
@@ -14,11 +15,9 @@ const RouterComponent = () => {
         <Scene key="register" component={SignUp} title="starting" hideNavBar />
       </Scene>
       <Scene key="main">
-        <Scene key="overview" component={Overview} title="Overview" hideNavBar initial />
-        <Scene key="PoolList" component={PoolList} title="PoolList" hideNavBar />
-
-        <Scene key="deposit" component={Sliders} title="Deposit" hideNavBar />
-
+        <Scene key="overview" component={MainPage} title="Overview" hideNavBar initial />
+        <Scene key="PoolList" component={PoolList} title="PoolList" hideNavBar={false} />
+        <Scene key="deposit" component={Sliders} title="Deposit" hideNavBar={false} />
       </Scene>
     </Router>
   );

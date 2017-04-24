@@ -1,40 +1,73 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
-//import { Actions } from 'react-native-router-flux';
-import { Card, Button } from 'react-native-elements';
+import { Text, View, LayoutAnimation } from 'react-native';
+import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
+import { ListItem } from 'react-native-elements';
+import { fetchstartup } from '../actions';
+import { CardSection } from '../components/common';
 
 class StartupItem extends Component {
-  render() {
-    const { name, desc } = this.props;
+  state = { name: '', desc: '', valuation: 0, expanded: false };
+  componentWillUpdate(){
+    LayoutAnimation.spring();
+  }
+  componentWillMount() {
+    console.log(this.props);
+    const { uid } = this.props.startups;
+    const X = (this.props.startup.startups[uid]);
+    const { name, valuation, Description } = X;
+    this.setState({ name: name, valuation: valuation, desc: Description});
+  }
+  onButtonPress() {
+    if(this.state.expanded){
+      this.setState({ expanded: false});
+    }
+    else {
+      this.setState({ expanded: true});
+    }
+  }
+  renderDesc(desc){
+    const { expanded } = this.state;
+    if(expanded){
       return (
-          <Card
-            imageStyle={{ borderWidth: 0 }}
-            containerStyle={{
-                              backgroundColor: '#ecf0f1',
-                              borderWidth: 0,
-                              borderColor: '#ecf0f1',
-                              borderBottomWidth: 0,
-                              borderBottomColor: '#ecf0f1',
-                              margin: 0,
-                            }}
+        <CardSection style={{   backgroundColor: '#ecf0f1', marginRight: 15, marginLeft: 20, borderColor: 'grey', borderWidth: 0.5, borderRadius: 5  }}>
+          <Text style={{ flex: 1}}>
+            {desc}
+          </Text>
+        </CardSection>
+        );
+    }
+    return <View/>
+  }
+
+  render() {
+      const {name, valuation, desc } = this.state
+      const value = valuation.toString();
+      return (
+        <View>
+          <ListItem
+            key='1'
             title={name}
-            image={require('./img/Upstart.png')}
-          >
-          <View style={{ marginBottom: 10 }}>
-            <Text>
-             {desc}
-            </Text>
-          </View>
-            <Button
-             icon={{ name: 'code' }}
-             backgroundColor='#03A9F4'
-             fontFamily='Lato'
-             buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 10 }}
-             title='More Info'
-            />
-          </Card>
+            subtitle={
+              <View style={{ paddingLeft: 10}}>
+                <Text>Valuation: {value}</Text>
+              </View>
+            }
+            containerStyle={{
+                             }}
+            onPress={this.onButtonPress.bind(this)}
+          />
+          {this.renderDesc(desc)}
+        </View>
       );
   }
 }
 
-export default StartupItem;
+const mapStateToProps = state => {
+  const { startup } = state;
+  return { startup };
+};
+
+
+export default connect(mapStateToProps, { fetchstartup })(StartupItem);

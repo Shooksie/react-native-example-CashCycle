@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, View, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { Button } from 'react-native-elements';
 import { emailChanged, passwordChanged, nameChanged, createUser } from '../actions';
-import { Card, CardSection, Input, Spinner } from './common';
+import { Card, CardSection, Input, Spinner } from '../components/common';
 
  class SignUp extends Component {
    onEmailChange(text) {
@@ -27,16 +27,26 @@ import { Card, CardSection, Input, Spinner } from './common';
      if (this.props.loading) {
        return <Spinner size="large" />;
      }
-     return (<Button
-              title="Sign Up"
-              onPress={this.onButtonPress.bind(this)}
-              buttonStyle={{ flex: 1, borderRadius: 5 }}
-              backgroundColor="blue"
-             />);
+     return (
+       <Button
+          title="Sign Up"
+          onPress={this.onButtonPress.bind(this)}
+          buttonStyle={{ borderRadius: 5 }}
+          backgroundColor="#4f9deb"
+       />
+            );
    }
    render() {
      return (
-       <Card>
+       <View style={{ flex: 1 }}>
+         <View style={{ flex: 4, alignItems: 'center', marginBottom: 20 }} >
+           <Image
+             style={{ marginTop: 30, flex: 1, width: 170 }}
+             source={require('../img/logo.png')}
+           />
+         </View>
+      <View style={{ flex: 4 }}>
+       <Card style={{flex: 1, marginTop: 30}}>
        <CardSection>
          <Input
          label="Name"
@@ -66,20 +76,23 @@ import { Card, CardSection, Input, Spinner } from './common';
         <Text style={styles.errorTextStyle}>
         {this.props.error}
         </Text>
-        <CardSection>
+        <View>
           {this.renderButton()}
-        </CardSection>
+        </View>
         <CardSection>
           <Text>Already have account?</Text>
         </CardSection>
-        <CardSection>
+        <View>
           <Button
           title="Login"
           onPress={this.onLoginPress.bind(this)}
-          buttonStyle={{ flex: 1, borderRadius: 5, }}
-          backgroundColor="green" />
-        </CardSection>
+          buttonStyle={{ borderRadius: 5, }}
+          backgroundColor="#27ae60"
+          />
+        </View>
        </Card>
+     </View>
+   </View>
      );
    }
  }

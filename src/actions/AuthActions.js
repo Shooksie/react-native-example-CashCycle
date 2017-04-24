@@ -31,13 +31,20 @@ export const nameChanged = (text) => {
   };
 };
 
-
-export const loginUser = ({ email, password }) => {
+export const creates = ({ email, password, name, account }) => {
     return (dispatch) => {
+    dispatch({ type: LOGIN_USER });
     firebase.auth().signInWithEmailAndPassword(email, password)
     .then(user => loginUserSuccess(dispatch, user))
     .catch(() => loginUserFail(dispatch));
-    Actions.main();
+  };
+};
+export const loginUser = ({ email, password }) => {
+    return (dispatch) => {
+    dispatch({ type: LOGIN_USER });
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .then(user => loginUserSuccess(dispatch, user))
+    .catch(() => loginUserFail(dispatch));
   };
 };
 
@@ -48,13 +55,24 @@ export const signup = () => {
 };
 
 export const createUser = ({ email, password, name }) => {
-  const account = 0;
+  const account = { balance: '0' };
   return (dispatch) => {
   dispatch({ type: LOGIN_USER });
-  firebase.auth().createUserWithEmailAndPassword(email, password)
-  .then(user => createUserSuccess(dispatch, user, name, account))
-  .catch(() => loginUserFail(dispatch));
-  Actions.main();
+  firebase.auth().signInWithEmailAndPassword(email, password)
+  .then(user => loginUserSuccess(dispatch, user))
+  .catch(() => {
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then(user => loginUserSuccess(dispatch, user))
+    .catch(() => loginUserFail(dispatch));
+});
+  firebase.auth().onAuthStateChanged(() => {
+      const { currentUser } = firebase.auth();
+      if (email === currentUser.email) {
+        firebase.database().ref(`/users/${currentUser.uid}/`)
+          .set({ name, email, account });
+        Actions.main();
+      }
+});
   };
 };
 const loginUserFail = (dispatch) => {
@@ -64,14 +82,5 @@ const loginUserSuccess = (dispatch, user) => {
   dispatch({
     type: LOGIN_USER_SUCCESS, payload: user
   });
-
-};
-const createUserSuccess = (dispatch, user, name, email, account) => {
-  const { currentUser } = firebase.auth();
-  firebase.database().ref(`/users/${currentUser.uid}/`)
-    .set({ name, email, account });
   Actions.main();
-  dispatch({
-        type: LOGIN_USER_SUCCESS, payload: user
-  });
 };

@@ -1,14 +1,16 @@
 import {
-  EMPLOYEES_FETCH_SUCCESS
+  FETCH_STARTUPS,
 } from '../actions/types';
 
-const INITIAL_STATE = {};
+const INITIAL_STATE = {
+  startups: {}
+};
 
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-      case EMPLOYEES_FETCH_SUCCESS:
-        return action.payload;
+      case FETCH_STARTUPS:
+        return {...state, startups: action.payload};
       default:
         return state;
   }

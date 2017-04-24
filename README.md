@@ -9,11 +9,22 @@ To clone:
 ```
 git https://github.com/Shooskie/CashCycle.git<br>
 ```
-to run app you need to have node.js, react-native cli, android emulator, xcode.<br>
+to run app you need to have node.js and react-native cli installed. android emulator, xcode.<br>
 ```
 node: https://nodejs.org/en/<br>
 react-native: https://facebook.github.io/react-native/
 ```
+if you have windows and mac and want to run the app in android you need android studio installed
+```
+https://developer.android.com/studio/index.html?gclid=Cj0KEQjwxPbHBRCdxJLF3qen3dYBEiQAMRyxS5Ilv4_EnwIEWGY1z-QOyPYqDx3teUT88SvXddyVv2QaAgOG8P8HAQ
+```
+if you want to run the app on ios you need to have the latet macos and the latest xcode
+```
+https://itunes.apple.com/us/app/xcode/id497799835?mt=12
+```
+questions email:
+samiziiv@gmail.com
+
 once node, and react-native are installed navigate to project directory in terminal and run 
 ```
 npm install

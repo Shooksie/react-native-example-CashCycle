@@ -5,6 +5,8 @@ CS449Project
 CashCycle is a savings app that aims to allow people to put money they want to invest or save.
 Targted audience is people that would like to invest small portions of their money.
 
+CashCycle uses 
+feel free to modify the app for you liking.
 To clone:
 ```
 git https://github.com/Shooskie/CashCycle.git<br>

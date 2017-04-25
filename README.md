@@ -9,11 +9,11 @@ CashCycle uses
 feel free to modify the app for you liking.
 To clone:
 ```
-git https://github.com/Shooskie/CashCycle.git<br>
+git https://github.com/Shooskie/CashCycle.git
 ```
 to run app you need to have node.js and react-native cli installed. android emulator, xcode.<br>
 ```
-node: https://nodejs.org/en/<br>
+node: https://nodejs.org/en
 react-native: https://facebook.github.io/react-native/
 ```
 if you have windows and mac and want to run the app in android you need android studio installed

@@ -6,12 +6,21 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { Card, Button, Text, FormLabel, FormInput, } from 'react-native-elements';
 import { Spinner, CardSection } from '../components/common';
-import { startupfetch, fetchstartup, investmentChanged, invest } from '../actions';
+import {
+  startupfetch,
+  fetchstartup,
+  investmentChanged,
+  invest,
+  depositChanged,
+  withdraws,
+  getBalance } from '../actions';
 import StartupItem from '../components/StartupItem';
 
 
 class PoolList extends Component {
+  state = { error: "", disable: false}
   componentWillMount(){
+    this.props.getBalance();
     this.createDataSource(this.props);
   }
   componentWillReceiveProps(nextProps) {
@@ -28,14 +37,27 @@ class PoolList extends Component {
     return <StartupItem startups={startup} />;
   }
   onButtonPress() {
-   const { amount, pools, balance } = this.props;
+   const { withdraw, pools, balance } = this.props;
    const { goal, current, uid, startups, category } = this.props.poolInfo;
-
-   this.props.invest({ startups, amount, current, goal, uid, category, balance });
+   this.props.invest({ startups, withdraw, current, goal, uid, category, balance });
+   this.props.withdraws({ withdraw, balance });
+   this.props.getBalance();
    Actions.overview();
   }
   onAmountChange(value) {
-    this.props.investmentChanged(value);
+    if(Number(value) > Number(this.props.balance)){
+      this.setState({
+        error: "Cannot withdraw more than current balance",
+        disable: true
+      });
+    }
+    else {
+      this.setState({
+        error: "",
+        disable: false
+      });
+    }
+    this.props.depositChanged({prop: 'withdraw', value });
   }
   renderList() {
    if (this.props.loading) {
@@ -51,9 +73,8 @@ class PoolList extends Component {
      />);
  }
   render() {
-      console.log(this.props);
       const { category, goal, current} = this.props.poolInfo;
-      const x = this.props.amount;
+      const x = this.props.withdraw;
       const Current = ' Current: '
       return (
       <ScrollView
@@ -72,7 +93,7 @@ class PoolList extends Component {
                             paddingBottom: 20,
                             marginTop: 100,
                             borderRadius: 10,
-                            opacity: 0.6
+                            opacity: 0.8
                           }}
           dividerStyle={{ marginRight: 5, marginLeft: 5 }}
           title={category}
@@ -93,10 +114,14 @@ class PoolList extends Component {
             <FormInput
               placeholder={'$'}
               keyboardType={'numeric'}
-              value={x}
+              value={this.props.withdraw}
               onChangeText={this.onAmountChange.bind(this)}
             />
+            <Text style={styles.errorTextStyle}>
+            {this.state.error}
+            </Text>
             <Button
+              disabled={this.state.disable}
               borderRadius={5}
               title="Invest"
               backgroundColor="#27ae60"
@@ -110,18 +135,29 @@ class PoolList extends Component {
     );
   }
 }
-
+const styles = {
+  errorTextStyle: {
+    fontSize: 18,
+    alignSelf: 'center',
+    color: 'red'
+  }
+};
 const mapStateToProps = state => {
   const pools = _.map(state.startups.startups, (val, uid) => {
      return { ...val, uid };
    });
-   console.log(state);
- const { amount } = state.investment;
- console.log(amount);
- const { balance } = state.balance;
+ const { balance, amount, withdraw } = state.balance;
  const { loading } = state.startup;
  const { poolInfo } = state.pools
-   return { pools, balance, loading, poolInfo, amount };
+ return { pools, balance, loading, poolInfo, withdraw };
 };
 
-export default connect(mapStateToProps, { startupfetch, fetchstartup, investmentChanged, invest })(PoolList);
+export default connect(mapStateToProps, {
+  withdraws,
+  startupfetch,
+  fetchstartup,
+  investmentChanged,
+  invest,
+  depositChanged,
+  getBalance
+})(PoolList);

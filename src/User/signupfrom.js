@@ -86,7 +86,7 @@ import { Card, CardSection, Input, Spinner } from '../components/common';
           <Button
           title="Login"
           onPress={this.onLoginPress.bind(this)}
-          buttonStyle={{ borderRadius: 5, }}
+          buttonStyle={{ borderRadius: 5, marginBottom: 20}}
           backgroundColor="#27ae60"
           />
         </View>

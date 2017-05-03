@@ -44,7 +44,7 @@ import { Card, CardSection, Input, Spinner } from '../components/common';
            />
          </View>
          <View style={{ flex: 4 }}>
-         <Card >
+         <Card style={{ paddingBottom: 20}}>
           <CardSection>
           <Input
           label="Email"
@@ -73,7 +73,7 @@ import { Card, CardSection, Input, Spinner } from '../components/common';
             <Button
               title="Sign Up"
               onPress={this.onSignUpPress.bind(this)}
-              buttonStyle={{ borderRadius: 5 }}
+              buttonStyle={{ borderRadius: 5, marginBottom: 20 }}
               backgroundColor="#4f9deb"
             />
             </View>
@@ -95,8 +95,6 @@ const mapStateToProps = ({ auth }) => {
   return { email, password, error, loading };
 };
 
-
 export default connect(mapStateToProps, {
   emailChanged, passwordChanged, loginUser
-
 })(LoginForm);

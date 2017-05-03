@@ -10,10 +10,9 @@ import { CardSection } from '../components/common';
 class StartupItem extends Component {
   state = { name: '', desc: '', valuation: 0, expanded: false };
   componentWillUpdate(){
-    LayoutAnimation.spring();
+    LayoutAnimation.easeInEaseOut();
   }
   componentWillMount() {
-    console.log(this.props);
     const { uid } = this.props.startups;
     const X = (this.props.startup.startups[uid]);
     const { name, valuation, Description } = X;
@@ -54,8 +53,7 @@ class StartupItem extends Component {
                 <Text>Valuation: {value}</Text>
               </View>
             }
-            containerStyle={{
-                             }}
+            rightIcon={{ name: 'chevron-down', type:'entypo', color: '#4f9deb' }}
             onPress={this.onButtonPress.bind(this)}
           />
           {this.renderDesc(desc)}

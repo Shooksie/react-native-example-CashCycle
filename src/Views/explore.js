@@ -4,11 +4,12 @@ import { connect } from 'react-redux';
 import { ListView, ScrollView } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { PricingCard } from 'react-native-elements';
-import { poolFetch, fetchstartup } from '../actions';
+import { poolFetch, fetchstartup, setLabel, getBalance } from '../actions';
 import PoolItem from '../components/PoolItem';
 
 class Explore extends Component {
   componentWillMount() {
+    this.props.getBalance();
     this.props.poolFetch();
     this.props.fetchstartup();
     this.createDataSource(this.props);
@@ -27,6 +28,7 @@ class Explore extends Component {
     return <PoolItem pool={pool} />;
   }
   onDepositPress() {
+    this.props.setLabel('Use Card');
     Actions.deposit();
   }
   render() {
@@ -56,6 +58,7 @@ class Explore extends Component {
   }
 }
 const mapStateToProps = state => {
+  console.log(state);
   const pools = _.map(state.pools.pool, (val, uid) => {
       return { ...val, uid };
     });
@@ -64,4 +67,6 @@ const mapStateToProps = state => {
 };
 
 
-export default connect(mapStateToProps, { poolFetch, fetchstartup })(Explore);
+export default connect(mapStateToProps, {
+  poolFetch, fetchstartup, setLabel, getBalance
+ })(Explore);

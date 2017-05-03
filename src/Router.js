@@ -4,8 +4,9 @@ import LoginForm from './User/LoginForm';
 import PoolList from './Views/PoolList';
 import SignUp from './User/signupfrom';
 import Sliders from './Views/DepositPage';
+import CardFormScreen from './Views/AccountPage';
 import MainPage from './main';
-
+import Account from './Views/account';
 
 const RouterComponent = () => {
   return (
@@ -18,6 +19,8 @@ const RouterComponent = () => {
         <Scene key="overview" component={MainPage} title="Overview" hideNavBar initial />
         <Scene key="PoolList" component={PoolList} title="PoolList" hideNavBar={false} />
         <Scene key="deposit" component={Sliders} title="Deposit" hideNavBar={false} />
+        <Scene key="account" component={Account} title="Deposit" />
+        <Scene key="add" component={CardFormScreen} hideNavBar={false} />
       </Scene>
     </Router>
   );

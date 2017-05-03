@@ -25,6 +25,16 @@ export const POOL_FETCH_SUCCESS = 'pool_fetch';
 export const POOL_INVEST = 'pool_invest';
 export const POOL_INFO = 'pool_info';
 export const INVESEMENT_AMOUNT = 'investment_amount';
-
+export const NO_INVESTMENTS = 'no_investment';
+export const CURRENT_INVESTMENTS = 'current_investments';
 export const FETCH_STARTUPS = 'fetch_startups';
 export const STARTUP_FETCH = 'startup_fetch';
+
+export const ADDCARD = 'add_card';
+export const REMOVECARD = 'remove_card';
+export const CARD_FETCH_SUCCESS = 'card_fetch_success';
+export const CARD_CHANGED = 'card_changed';
+
+export const SETLABEL = 'set_label';
+
+export const VALID = 'valid';

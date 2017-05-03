@@ -5,7 +5,7 @@ import { ListItem } from 'react-native-elements';
 import { poolstartup, poolInfo } from '../actions';
 
 
-class PoolItem extends Component {
+class UserPoolItem extends Component {
   onButtonPress(uid) {
     this.props.poolInfo(this.props.pool);
     this.props.poolstartup(uid.startups);
@@ -19,8 +19,7 @@ class PoolItem extends Component {
           key='1'
           title={category}
           subtitle={subtitle}
-          containerStyle={{
-                           }}
+          rightIcon={{color: '#4f9deb' }}
           onPress={() => this.onButtonPress(this.props.pool)}
           />
       );
@@ -33,4 +32,4 @@ const mapStateToProps = state => {
 };
 
 
-export default connect(mapStateToProps, { poolstartup, poolInfo })(PoolItem);
+export default connect(mapStateToProps, { poolstartup, poolInfo })(UserPoolItem);

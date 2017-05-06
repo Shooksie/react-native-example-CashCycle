@@ -3,28 +3,28 @@ import { Actions } from 'react-native-router-flux';
 import { withdraws } from './DepositActions';
 import {
   POOL_INVEST,
-  INVESEMENT_AMOUNT
+  INVESEMENT_AMOUNT,
+  DEPOSIT_CHANGED
 } from './types';
 
 
-export const investmentChanged = (text) => {
+export const investmentChanged = (value) => {
   return {
-      type: INVESEMENT_AMOUNT,
-      payload: text
+      type: DEPOSIT_CHANGED,
+      payload: { withdraw: value }
   };
 };
 
 
-export const invest = ({ startups, amount, current, goal, uid, category, balance }) => {
-    console.log({ startups, amount, current, goal, uid, category });
-    const percent = (Number(amount)/ Number(goal)) * 100;
+export const invest = ({ startups, withdraw, current, goal, uid, category, balance }) => {
+    const percent = (Number(withdraw)/ Number(goal)) * 100;
     const ownership = percent;
-    const temp = Number(amount) + Number(current);
-    current = temp.toString();
+    const temp = Number(withdraw) + Number(current);
+    const newcurrent = temp.toString();
     const item = uid;
     return(dispatch) => {
     firebase.database().ref(`/pools/${item}/`)
-      .set({ startups, current, goal, category });
+      .set({ startups, current: newcurrent, goal, category });
       const { currentUser } = firebase.auth();
 
       firebase.database().ref(`/users/${currentUser.uid}/investments/${item}`)
@@ -34,20 +34,17 @@ export const invest = ({ startups, amount, current, goal, uid, category, balance
             let val = snapshot.val().amount;
             let perc = snapshot.val().ownership;
             const per = ownership + perc;
-            const vals = Number(val) + Number(amount);
+            const vals = Number(val) + Number(withdraw);
             const valu = vals.toString();
-            console.log(vals, valu);
             firebase.database().ref(`/users/${currentUser.uid}/investments/${item}`)
             .set({ amount: valu , ownership: per });
           }
           else{
             firebase.database().ref(`/users/${currentUser.uid}/investments/${item}`)
-            .set({ amount , ownership});
+            .set({ amount: withdraw , ownership});
           }
         });
-        const withdraw = amount;
-        withdraws({ withdraw, balance });
-        dispatch({ type: POOL_INVEST, payload: amount });
+        dispatch({ type: POOL_INVEST, payload:{ amount: withdraw } });
 
       }
     }

@@ -3,9 +3,12 @@ import { Text, ScrollView } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { PricingCard, List, ListItem, Button } from 'react-native-elements';
-import { getBalance, depositChanged, deposit, withdraws } from '../actions';
-
+import { getBalance, depositChanged, deposit, withdraws, setLabel } from '../actions';
+import UserProfile from './AccountPage';
 class Account extends Component {
+  componentWillMount(){
+    this.props.setLabel('Edit Card');
+  }
   onAmountChange(value) {
     this.props.depositChanged(value);
   }
@@ -18,21 +21,10 @@ class Account extends Component {
     this.props.withdraws({ withdraw, balance });
   }
   render() {
-    const balancer = (this.props.balance);  
+    const balancer = (this.props.balance);
   return (
       <ScrollView style={{ flex: 1 }}>
-        <PricingCard
-          containerStyle={{
-            borderRadius: 5,
-            marginTop: 20 }}
-          priceStyle={{ color: '#95a5a6' }}
-          color='#4f9deb'
-          title='Current Account'
-          price={balancer}
-          info={['you currently have']}
-          button={{ title: 'Deposit/Withdraw', icon: 'local-atm' }}
-          onButtonPress={() => this.onDepositPress()}
-        />
+        <UserProfile />
       </ScrollView>
    );
  }
@@ -44,5 +36,5 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-   getBalance, depositChanged, deposit, withdraws
+   getBalance, depositChanged, deposit, withdraws, setLabel 
 })(Account);

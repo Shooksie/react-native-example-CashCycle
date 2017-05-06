@@ -5,3 +5,5 @@ export * from './DepositActions';
 export * from './poolactions';
 export * from './StartUpactions';
 export * from './InvestAction';
+export * from './PoolInvestmentActions';
+export * from './CardActions';

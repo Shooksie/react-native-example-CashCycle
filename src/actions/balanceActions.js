@@ -6,17 +6,13 @@ import {
 
 
 export const getBalance = () => {
+  console.log('fetching balance');
   const { currentUser } = firebase.auth();
   return (dispatch) => {
-    console.log('dispatching');
     firebase.database().ref(`/users/${currentUser.uid}/account`)
     .on('value', snapshot => {
+      console.log(snapshot.val());
       dispatch({ type: BALANCE_FETCH_SUCCESS, payload: snapshot.val() });
     });
   };
-};
-
-export const demodify = (value) => {
-  const num = (value * 1000000) / 1111;
-  return num;
 };

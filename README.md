@@ -30,6 +30,7 @@ samiziiv@gmail.com
 once node, and react-native are installed navigate to project directory in terminal and run 
 ```
 npm install
+react-native link
 ```
 <h1 align="center">
  Screenshots
